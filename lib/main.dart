@@ -3,8 +3,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_portfolio/backend/lichess.dart';
+import 'package:my_portfolio/landing_page.dart';
+import 'package:my_portfolio/test.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 // void main() {
 //   // runApp(const MyApp());
@@ -20,13 +24,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'dineth.me',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      // home: const HomePage(),
+      home: CircleTimer(),
     );
   }
 }
@@ -43,10 +49,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Chess Demo'),
-      ),
-    );
+    return ResponsiveSizer(builder: (context, orientation, screenType) {
+      return LandingPage();
+    });
   }
 }
