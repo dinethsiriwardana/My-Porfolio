@@ -1,0 +1,36 @@
+name: Copy Files to dineth.me-v2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check commit message
+        id: check_commit_message
+        run: echo "::set-output name=is_release::$(if echo '${{ github.event.head_commit.message }}' | grep -iq 'release'; then echo 'true'; else echo 'false'; fi)"
+
+      - name: Checkout source repository
+        uses: actions/checkout@v2
+        with:
+          repository: dinethsiriwardana/My-Porfolio
+          ref: main
+
+      - name: Copy files to dineth.me-v2
+        if: steps.check_commit_message.outputs.is_release == 'true'
+        run: |
+          mkdir -p ../dineth.me-v2
+          cp -r build/web/* ../dineth.me-v2
+
+      - name: Push to dineth.me-v2 repository
+        if: steps.check_commit_message.outputs.is_release == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          repository: dinethsiriwardana/dineth.me-v2
+          force: true
