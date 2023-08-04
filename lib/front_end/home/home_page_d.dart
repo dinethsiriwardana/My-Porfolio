@@ -1,11 +1,8 @@
-import 'dart:ui';
-
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/controller/nav_controller.dart';
@@ -21,6 +18,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../controller/time_controller.dart';
 import 'elements/time_circle.dart';
+import 'dart:js' as js;
 
 class HomePageD extends StatefulWidget {
   const HomePageD({super.key});
@@ -44,11 +42,11 @@ class _HomePageDState extends State<HomePageD> {
   BlockElement blockElement = BlockElement();
   @override
   Widget build(BuildContext context) {
-    Column block = Column();
+    Column block = const Column();
 
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         height: 100.h,
         width: 100.w,
         decoration: const BoxDecoration(
@@ -60,7 +58,7 @@ class _HomePageDState extends State<HomePageD> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            CenterModel(),
+            const CenterModel(),
             Align(
               alignment: Alignment.topLeft,
               child: Column(
@@ -68,7 +66,7 @@ class _HomePageDState extends State<HomePageD> {
                 children: [
                   blockElement.mainText("Hello", 1.8),
                   blockElement.mainText("I'm Dineth Siriwardhana", 2.2),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Obx(() {
@@ -145,46 +143,68 @@ class _HomePageDState extends State<HomePageD> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //Add image
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("/image/wa.png"),
-                            fit: BoxFit.cover,
+                      InkWell(
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("/image/wa.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("/image/fb.png"),
-                            fit: BoxFit.cover,
+                          onTap: () {
+                            js.context
+                                .callMethod('open', ['https://wa.link/vm0zbm']);
+                          }),
+                      InkWell(
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("/image/li.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("/image/in.png"),
-                            fit: BoxFit.cover,
+                          onTap: () {
+                            js.context.callMethod('open', [
+                              'https://www.linkedin.com/in/dinethsiriwardana/'
+                            ]);
+                          }),
+                      InkWell(
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("/image/fb.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("/image/li.png"),
-                            fit: BoxFit.cover,
+                          onTap: () {
+                            js.context.callMethod(
+                                'open', ['https://facebook.com/dinethSi']);
+                          }),
+                      InkWell(
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("/image/in.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                          onTap: () {
+                            js.context.callMethod('open', [
+                              'https://www.instagram.com/dineth_siriwardana/'
+                            ]);
+                          }),
                     ],
                   )),
             )
