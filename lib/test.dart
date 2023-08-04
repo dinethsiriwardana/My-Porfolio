@@ -1,64 +1,72 @@
-import 'dart:async';
+import 'dart:convert';
 
-import 'package:circle_progress_bar/circle_progress_bar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:http/http.dart' as http;
+import 'package:my_portfolio/model/moviem.dart';
 
-import 'controller/time_controller.dart';
+class Test extends StatefulWidget {
+  const Test({super.key});
 
-class CircleTimer extends StatefulWidget {
   @override
-  _CircleTimerState createState() => _CircleTimerState();
+  State<Test> createState() => _TestState();
 }
 
-class _CircleTimerState extends State<CircleTimer> {
-  double progressValue = 0.0; // Initial progress value
-  int totalMilliseconds = 60000; // Total milliseconds for the timer
-  final GetTimeController getTimeController = Get.put(GetTimeController());
-  @override
-  void initState() {
-    super.initState();
-    // Start the timer when the widget is created
-    // startTimer();
-    getTimeController.startTimerMin();
-  }
+Future<List<dynamic>> getPopuler() async {
+  const url = "https://api.themoviedb.org/3/movie/popular";
+  final http.Response response = await http.get(Uri.parse(url), headers: {
+    'accept': 'application/json',
+    'Authorization':
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYWRiNTRkYTdiNjk0NTk2MmY2NTliOGMwZGVmOWMzMCIsInN1YiI6IjY0YzhhYjY4Yjk3NDQyMDE0ZThjZmU2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BbiwwWhRBBsfHWQ2sEZGGYyIP38xsz1oC46J-278_XU'
+  });
 
-  // void startTimer() {
-  //   Timer.periodic(Duration(milliseconds: 10), (timer) {
-  //     // Update the progress value every 100 milliseconds
-  //     setState(() {
-  //       DateTime now = DateTime.now();
-  //       int currentSeconds = now.second;
-  //       int currentMiliSeconds = now.microsecond;
+  final data = jsonDecode(response.body);
 
-  //       progressValue = currentSeconds / 60;
-  //       double roundedNumber = double.parse(progressValue.toStringAsFixed(3)) +
-  //           (currentMiliSeconds / 100000); // Rounded to 3 decimal places
+  return data['results'];
+}
 
-  //       print(roundedNumber);
-  //     });
-  //   });
-  // }
-
+class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Circle Timer'),
-      ),
-      body: Center(
-        child: SizedBox(
-          width: 300,
-          child: Obx(
-            () => CircleProgressBar(
-              // animationDuration: Duration(seconds: 1),
-              foregroundColor: Colors.blue,
-              backgroundColor: Colors.white.withOpacity(0),
-              value: getTimeController.progressValueSec.value,
-            ),
-          ),
-        ),
+      body: FutureBuilder(
+        future: getPopuler(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final List? movieList = snapshot.data;
+            return ListView.builder(
+              itemCount: movieList!.length,
+              itemBuilder: (context, index) {
+                final movieData = movieList[index];
+                // print(movieData);
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          movieData['title'],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: Image.network(
+                        'https://image.tmdb.org/t/p/w500${movieData['poster_path']}',
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            print(snapshot.error);
+          }
+
+          return Container();
+        },
       ),
     );
   }

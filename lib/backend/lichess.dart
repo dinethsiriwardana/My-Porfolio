@@ -2,13 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:my_portfolio/model/lichess_model.dart';
 
 class Lichess {
-
   Future<void> run() async {
-   
-      Timer.periodic(Duration(seconds: 2), (timer) async {
+    Timer.periodic(Duration(seconds: 2), (timer) async {
       await fetchCurrentGames('joshuadeguzman');
       await userdata();
     });

@@ -15,6 +15,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 // }
 void main() {
   runApp(const MyApp());
+  // runApp(const Test());
   Lichess lichess = Lichess();
 }
 
@@ -31,8 +32,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: const HomePage(),
-      home: CircleTimer(),
+      home: const HomePage(),
+      // home: Test(),
     );
   }
 }
