@@ -28,7 +28,9 @@ class BlockElement {
   }
 
   Container programmingLicon(String image) {
-    double size = 3.2.w;
+    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
+
+    double size = isMobi ? 10.w : 3.2.w;
     return Container(
       width: size,
       height: size,
@@ -43,7 +45,9 @@ class BlockElement {
   }
 
   Container programmingLicons(String image) {
-    double size = 2.2.w;
+    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
+
+    double size = isMobi ? 6.5.w : 3.2.w;
     return Container(
       width: size,
       height: size,

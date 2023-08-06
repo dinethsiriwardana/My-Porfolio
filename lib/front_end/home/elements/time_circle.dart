@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/time_controller.dart';
+import 'package:responsive_sizer/responsive_sizer.dart' as ResponsiveSizer;
 
 class TimeCircle extends StatelessWidget {
   TimeCircle(
@@ -19,7 +20,10 @@ class TimeCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final GetTimeController getTimeController = Get.put(GetTimeController());
-
+    double strokeWidth =
+        ResponsiveSizer.Device.screenType == ResponsiveSizer.ScreenType.mobile
+            ? 10
+            : 15;
     return SizedBox(
       width: size,
       child: CircleProgressBar(
@@ -27,7 +31,7 @@ class TimeCircle extends StatelessWidget {
         foregroundColor: foregroundColor,
         backgroundColor: foregroundColor.withOpacity(0.03),
         value: value,
-        strokeWidth: 15,
+        strokeWidth: strokeWidth,
       ),
     );
   }

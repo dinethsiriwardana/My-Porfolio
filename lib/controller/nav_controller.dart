@@ -7,7 +7,8 @@ import 'package:my_portfolio/front_end/home/elements/experience.dart';
 import 'package:my_portfolio/front_end/home/elements/project.dart';
 
 class GetNavController extends GetxController {
-  var navIndex = 0.obs;
+  var navIndexDesktop = 0.obs;
+  var navIndexmobi = 1.obs;
   var navIndexarr = [0, 0].obs;
   var navOp = 0.0.obs;
   var currentBlock = Rx<Widget>(Align());
@@ -17,11 +18,21 @@ class GetNavController extends GetxController {
     navOp.value = op;
   }
 
-  void changeNavIndex(int index) {
-    if (navIndex == index) {
-      navIndex.value = 0;
+  //change navIndexmobi
+  void changeNavIndexMobi(int index) {
+    if (navIndexmobi == index) {
+      navIndexmobi.value = 0;
     } else {
-      navIndex.value = index;
+      navIndexmobi.value = index;
+    }
+    changeNavUI();
+  }
+
+  void changeNavIndex(int index) {
+    if (navIndexDesktop == index) {
+      navIndexDesktop.value = 0;
+    } else {
+      navIndexDesktop.value = index;
     }
     changeNavUI();
   }
@@ -30,7 +41,7 @@ class GetNavController extends GetxController {
     navOp.value = 0.0;
     Align block = Align();
     ;
-    if (navIndex == 1) {
+    if (navIndexDesktop == 1) {
       block = Align(
         alignment: Alignment.centerRight,
         child: SideBlock(
@@ -38,7 +49,7 @@ class GetNavController extends GetxController {
           block: AboutMe().aboutMeBlock(),
         ),
       );
-    } else if (navIndex == 2) {
+    } else if (navIndexDesktop == 2) {
       block = Align(
         alignment: Alignment.centerRight,
         child: SideBlock(
@@ -46,7 +57,7 @@ class GetNavController extends GetxController {
           block: Education().eduBlock(),
         ),
       );
-    } else if (navIndex == 3) {
+    } else if (navIndexDesktop == 3) {
       block = Align(
         alignment: Alignment.centerRight,
         child: SideBlock(
@@ -54,7 +65,7 @@ class GetNavController extends GetxController {
           block: Experience().expBlock(),
         ),
       );
-    } else if (navIndex == 4) {
+    } else if (navIndexDesktop == 4) {
       block = Align(
         alignment: Alignment.centerRight,
         child: SideBlock(

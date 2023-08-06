@@ -13,9 +13,17 @@ class SideBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UIColors uiColors = UIColors();
+    double width = 0, height = 0;
+    if (Device.screenType == ScreenType.mobile) {
+      width = 90.w;
+      height = 53.h;
+    } else {
+      width = 27.w;
+      height = 70.h;
+    }
     return GlassContainer(
-        width: 27.w,
-        height: 70.h,
+        width: width,
+        height: height,
         blur: 20,
         border: Border.all(
           color: uiColors.lightblue.withOpacity(0.3),
@@ -23,7 +31,7 @@ class SideBlock extends StatelessWidget {
         ),
         shadowStrength: 5,
         // shape: BoxShape.circle,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(25),
         shadowColor: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.20),
         gradient: LinearGradient(
           begin: Alignment.topLeft,

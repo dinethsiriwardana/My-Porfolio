@@ -1,0 +1,29 @@
+name: Copy from Source Repository
+
+on:
+  workflow_dispatch: # This will enable manual triggering of the workflow.
+
+jobs:
+  copy_from_source_repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Source Repository Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: source-repo-artifact
+          path: source-repo # This will download the contents to a folder named "source-repo."
+
+      - name: Copy Contents to Target Repository
+        uses: actions/checkout@v2
+
+      - name: Move Contents
+        run: mv source-repo/* .
+
+      - name: Commit Changes
+        run: |
+          git config user.name "dinethsiriwardana"
+          git config user.email "dinethsiriwardana28@gmail.com"
+          git add .
+          git commit -m "Copy contents from source repository"
+          git push

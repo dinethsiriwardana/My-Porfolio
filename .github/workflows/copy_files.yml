@@ -30,7 +30,7 @@ jobs:
         if: steps.check_commit_message.outputs.is_release == 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.G_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
           repository: dinethsiriwardana/dineth.me-v2
           force: true

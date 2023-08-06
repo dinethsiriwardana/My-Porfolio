@@ -56,17 +56,19 @@ class GetTimeController extends GetxController {
   void startTimerhour() {
     try {
       DateTime now = DateTime.now();
-      double currentHour = now.hour as double;
+      double currentHour = now.hour >= 13 ? now.hour - 12 : now.hour as double;
       double currentMin = now.minute as double;
 
       print(currentHour + (currentMin / 100));
       progressValueHour.value = (currentHour + (currentMin / 100)) / 12;
+      print(progressValueHour.value);
 
       Timer.periodic(Duration(minutes: 1), (timer) {
         // currentHour = currentHour + 0.04;
         // progressValueHour.value = progressValueHour.value + 0.001;
         DateTime now = DateTime.now();
-        double currentHour = now.hour as double;
+        double currentHour =
+            now.hour >= 13 ? now.hour - 12 : now.hour as double;
         double currentMin = now.minute as double;
 
         progressValueHour.value = (currentHour + (currentMin / 100)) / 12;

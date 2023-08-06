@@ -1,33 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
 import 'package:my_portfolio/util/colors.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AboutMe {
   BlockElement blockElement = BlockElement();
   UIColors uiColors = UIColors();
+
   Widget aboutMeBlock() {
+    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 30,
-          ),
-          blockElement.hedText("ABOUT ME", 2),
           SizedBox(
-            height: 20,
+            height: isMobi ? 20 : 30,
+          ),
+          blockElement.hedText("ABOUT ME", isMobi ? 7 : 2),
+          SizedBox(
+            height: isMobi ? 5 : 20,
           ),
           Padding(
-              padding: const EdgeInsets.only(
-                left: 30.0,
-                right: 30.0,
+              padding: EdgeInsets.only(
+                left: isMobi ? 10 : 30.0,
+                right: isMobi ? 10 : 30.0,
               ),
               child: blockElement.subText(
                   "I am a self-motivated, quick learner, and dedicated person committed to improving my skills and abilities,\nwith a passion for creative\nproblem-solving, leadership, and\npressure-handling.",
-                  1.2)),
+                  isMobi ? 4 : 1.2)),
           SizedBox(
-            height: 10,
+            height: isMobi ? 5 : 10,
           ),
           Container(
             margin: EdgeInsets.all(10),
@@ -36,11 +39,11 @@ class AboutMe {
             color: uiColors.darkblue.withOpacity(0.2),
           ),
           SizedBox(
-            height: 10,
+            height: isMobi ? 5 : 10,
           ),
-          blockElement.hedText("What I use", 1.3),
+          blockElement.hedText("What I use", isMobi ? 4.2 : 1.3),
           SizedBox(
-            height: 10,
+            height: isMobi ? 5 : 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -50,11 +53,11 @@ class AboutMe {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: isMobi ? 5 : 10,
           ),
-          blockElement.hedText("Everything I know", 1.3),
-          const SizedBox(
-            height: 10,
+          blockElement.hedText("Everything I know", isMobi ? 4.2 : 1.3),
+          SizedBox(
+            height: isMobi ? 5 : 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

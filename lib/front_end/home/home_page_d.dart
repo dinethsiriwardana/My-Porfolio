@@ -72,7 +72,7 @@ class _HomePageDState extends State<HomePageD> {
                   Obx(() {
                     return InkWell(
                       child: blockElement.navText("ABOUT ME", 1.2,
-                          getNavController.navIndex.value == 1),
+                          getNavController.navIndexDesktop.value == 1),
                       onTap: () {
                         getNavController.changeNavOp(0.0);
                         getNavController.changeNavIndex(1);
@@ -82,7 +82,7 @@ class _HomePageDState extends State<HomePageD> {
                   Obx(() {
                     return InkWell(
                       child: blockElement.navText("EDUCATION", 1.2,
-                          getNavController.navIndex.value == 2),
+                          getNavController.navIndexDesktop.value == 2),
                       onTap: () {
                         getNavController.changeNavOp(0.0);
                         getNavController.changeNavIndex(2);
@@ -92,7 +92,7 @@ class _HomePageDState extends State<HomePageD> {
                   Obx(() {
                     return InkWell(
                       child: blockElement.navText("EXPERIENCE", 1.2,
-                          getNavController.navIndex.value == 3),
+                          getNavController.navIndexDesktop.value == 3),
                       onTap: () {
                         getNavController.changeNavOp(0.0);
                         getNavController.changeNavIndex(3);
@@ -102,7 +102,7 @@ class _HomePageDState extends State<HomePageD> {
                   Obx(() {
                     return InkWell(
                       child: blockElement.navText("PROJECTS", 1.2,
-                          getNavController.navIndex.value == 4),
+                          getNavController.navIndexDesktop.value == 4),
                       onTap: () {
                         getNavController.changeNavOp(0.0);
                         getNavController.changeNavIndex(4);
