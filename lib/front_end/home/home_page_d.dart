@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/controller/nav_controller.dart';
 import 'package:my_portfolio/front_end/home/elements/about_me.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
+import 'package:my_portfolio/front_end/home/elements/block/contact.dart';
 import 'package:my_portfolio/front_end/home/elements/center_model.dart';
 import 'package:my_portfolio/front_end/home/elements/education.dart';
 import 'package:my_portfolio/front_end/home/elements/block/side_block.dart';
@@ -115,99 +116,7 @@ class _HomePageDState extends State<HomePageD> {
             Obx(() {
               return getNavController.currentBlock.value;
             }),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: GlassContainer(
-                  width: 13.w,
-                  height: 5.h,
-                  blur: 20,
-                  border: Border.all(
-                    color: uiColors.lightblue.withOpacity(0.3),
-                    width: 1,
-                  ),
-                  shadowStrength: 5,
-                  // shape: BoxShape.circle,
-                  borderRadius: BorderRadius.circular(10),
-                  shadowColor:
-                      const Color.fromARGB(255, 0, 0, 0).withOpacity(0.20),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Colors.white.withOpacity(0.2),
-                      Colors.blue.withOpacity(0.3),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //Add image
-                      InkWell(
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("/image/wa.png"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            js.context
-                                .callMethod('open', ['https://wa.link/vm0zbm']);
-                          }),
-                      InkWell(
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("/image/li.png"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            js.context.callMethod('open', [
-                              'https://www.linkedin.com/in/dinethsiriwardana/'
-                            ]);
-                          }),
-                      InkWell(
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("/image/fb.png"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            js.context.callMethod(
-                                'open', ['https://facebook.com/dinethSi']);
-                          }),
-                      InkWell(
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("/image/in.png"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            js.context.callMethod('open', [
-                              'https://www.instagram.com/dineth_siriwardana/'
-                            ]);
-                          }),
-                    ],
-                  )),
-            )
+            Align(alignment: Alignment.bottomRight, child: Contact().contact()),
           ],
         ) /* add child content here */,
       ),

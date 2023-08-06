@@ -2,29 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/util/colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'dart:js' as js;
 
 class BlockElement {
   UIColors uiColors = UIColors();
+  bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
 
   Padding singleDetailsBlock(
       String date, String location, String type, String details) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30.0, 10, 30, 10),
+      padding: isMobi
+          ? EdgeInsets.fromLTRB(15.0, 5, 15, 5)
+          : EdgeInsets.fromLTRB(30.0, 10, 30, 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              subText(date, 1),
-              subText(location, 1),
+              subText(date, isMobi ? 3.5 : 1),
+              subText(location, isMobi ? 3.5 : 1),
             ],
           ),
-          hedText(type, 1.5),
-          hedText(details, 0.91),
+          hedText(type, isMobi ? 5.2 : 1.5),
+          hedText(details, isMobi ? 3.5 : 0.91),
         ],
       ),
     );
+  }
+
+  InkWell contactBar(String img, String link) {
+    return InkWell(
+        child: Container(
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(img),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        onTap: () {
+          js.context.callMethod('open', [link]);
+        });
   }
 
   Container programmingLicon(String image) {

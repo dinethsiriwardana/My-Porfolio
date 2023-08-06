@@ -25,8 +25,8 @@ class _CenterModelState extends State<CenterModel> {
     double space = 0;
     if (ResponsiveSizer.Device.screenType ==
         ResponsiveSizer.ScreenType.mobile) {
-      wsize = 150;
-      space = 30;
+      wsize = 120;
+      space = 20;
     } else {
       wsize = 300;
       space = 50;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
 import 'package:my_portfolio/util/colors.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:js' as js;
 
@@ -8,6 +9,8 @@ class Project {
   BlockElement blockElement = BlockElement();
   UIColors uiColors = UIColors();
   Widget projectBlock() {
+    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
+
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -19,7 +22,7 @@ class Project {
           ),
           Align(
               alignment: Alignment.center,
-              child: blockElement.hedText("PROJECTS", 2)),
+              child: blockElement.hedText("PROJECTS", isMobi ? 7 : 2)),
           const SizedBox(
             height: 15,
           ),
@@ -27,7 +30,9 @@ class Project {
             "Jul 2023",
             "Faculty of Technology - UOR",
             "RICIT - 2023",
-            "Develop Official Website for Ruhuna International \nConference on Innovation and Technology 2023",
+            isMobi
+                ? "Develop Official Website for Ruhuna International Conference on Innovation and Technology 2023"
+                : "Develop Official Website for Ruhuna International \nConference on Innovation and Technology 2023",
           ),
           InkWell(
               child: blockElement.singleDetailsBlock(

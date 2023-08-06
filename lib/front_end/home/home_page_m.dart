@@ -6,6 +6,7 @@ import 'package:my_portfolio/controller/nav_controller.dart';
 import 'package:my_portfolio/controller/time_controller.dart';
 import 'package:my_portfolio/front_end/home/elements/about_me.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
+import 'package:my_portfolio/front_end/home/elements/block/contact.dart';
 import 'package:my_portfolio/front_end/home/elements/block/side_block.dart';
 import 'package:my_portfolio/front_end/home/elements/center_model.dart';
 import 'package:my_portfolio/util/colors.dart';
@@ -24,9 +25,10 @@ class _HomePageMState extends State<HomePageM> {
   final UIColors uiColors = UIColors();
   void initState() {
     super.initState();
-    // getTimeController.startTimerSec();
-    // getTimeController.startTimerMin();
-    // getTimeController.startTimerhour();
+    getTimeController.startTimerSec();
+    getTimeController.startTimerMin();
+    getTimeController.startTimerhour();
+    getNavController.changeNavUIMobi();
   }
 
   BlockElement blockElement = BlockElement();
@@ -35,7 +37,7 @@ class _HomePageMState extends State<HomePageM> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      padding: const EdgeInsets.all(30),
+      padding: const EdgeInsets.all(20),
       height: 100.h,
       width: 100.w,
       decoration: const BoxDecoration(
@@ -47,6 +49,7 @@ class _HomePageMState extends State<HomePageM> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
             width: 100.w,
@@ -67,9 +70,9 @@ class _HomePageMState extends State<HomePageM> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Obx(
-                () => navContainer(0),
-              ),
+              // Obx(
+              //   () => navContainer(0),
+              // ),
               Obx(
                 () => navContainer(1),
               ),
@@ -85,6 +88,9 @@ class _HomePageMState extends State<HomePageM> {
             ],
           ),
           SwipeDetector(
+            onSwipe: (direction, offset) {
+              print(direction);
+            },
             onSwipeLeft: (offset) {
               getNavController
                   .changeNavIndexMobi(getNavController.navIndexmobi.value + 1);
@@ -95,8 +101,11 @@ class _HomePageMState extends State<HomePageM> {
                   .changeNavIndexMobi(getNavController.navIndexmobi.value - 1);
               print(getNavController.navIndexmobi.value);
             },
-            child: SideBlock(block: AboutMe().aboutMeBlock()),
-          )
+            child: Obx(() {
+              return getNavController.currentBlocMobi.value;
+            }),
+          ),
+          Contact().contact()
         ],
       ),
     ));

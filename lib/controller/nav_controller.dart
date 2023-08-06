@@ -12,6 +12,7 @@ class GetNavController extends GetxController {
   var navIndexarr = [0, 0].obs;
   var navOp = 0.0.obs;
   var currentBlock = Rx<Widget>(Align());
+  var currentBlocMobi = Rx<Widget>(Column());
 
   //chaneg navOp
   void changeNavOp(double op) {
@@ -20,12 +21,42 @@ class GetNavController extends GetxController {
 
   //change navIndexmobi
   void changeNavIndexMobi(int index) {
-    if (navIndexmobi == index) {
-      navIndexmobi.value = 0;
-    } else {
+    //check the number >=0 or  <=4
+    if (index >= 1 && index <= 4) {
       navIndexmobi.value = index;
     }
-    changeNavUI();
+
+    changeNavUIMobi();
+  }
+
+  void changeNavUIMobi() {
+    navOp.value = 0.0;
+    Widget block = const SizedBox();
+
+    if (navIndexmobi == 1) {
+      block = SideBlock(
+        // block: A,
+        block: AboutMe().aboutMeBlock(),
+      );
+    } else if (navIndexmobi == 2) {
+      block = SideBlock(
+        // block: A,
+        block: Education().eduBlock(),
+      );
+    } else if (navIndexmobi == 3) {
+      block = SideBlock(
+        // block: A,
+        block: Experience().expBlock(),
+      );
+    } else if (navIndexmobi == 4) {
+      block = SideBlock(
+        // block: A,
+        block: Project().projectBlock(),
+      );
+    } else {
+      block = const SizedBox();
+    }
+    currentBlocMobi.value = block;
   }
 
   void changeNavIndex(int index) {
@@ -40,7 +71,7 @@ class GetNavController extends GetxController {
   void changeNavUI() {
     navOp.value = 0.0;
     Align block = Align();
-    ;
+
     if (navIndexDesktop == 1) {
       block = Align(
         alignment: Alignment.centerRight,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
 import 'package:my_portfolio/util/colors.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class Experience {
   BlockElement blockElement = BlockElement();
   UIColors uiColors = UIColors();
+  bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
   Widget expBlock() {
     return SingleChildScrollView(
       child: Column(
@@ -16,7 +18,7 @@ class Experience {
           ),
           Align(
               alignment: Alignment.center,
-              child: blockElement.hedText("EXPERIENCE", 2)),
+              child: blockElement.hedText("EXPERIENCE", isMobi ? 7 : 2)),
           const SizedBox(
             height: 15,
           ),
@@ -33,20 +35,24 @@ class Experience {
             "Consultant | Developer and Maintaine DBMS",
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30.0, 10, 30, 10),
+            padding: isMobi
+                ? EdgeInsets.fromLTRB(15.0, 5, 15, 5)
+                : EdgeInsets.fromLTRB(30.0, 10, 30, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                blockElement.hedText("Also I'm a", 1.5),
-                blockElement.subText("Graphic Designer since 2017", 1),
-                blockElement.subText("Photographer since 2018", 1),
+                blockElement.hedText("Also I'm a", isMobi ? 5 : 1.5),
                 blockElement.subText(
-                    "Mixing and mastering engineer 2018 - 2022", 1),
+                    "Graphic Designer since 2017", isMobi ? 3.5 : 1),
+                blockElement.subText(
+                    "Photographer since 2018", isMobi ? 3.5 : 1),
+                blockElement.subText("Mixing & mastering engineer 2018 - 2022",
+                    isMobi ? 3.5 : 1),
               ],
             ),
           ),
           SizedBox(
-            height: 200,
+            height: isMobi ? 3.5 : 200,
           )
         ],
       ),

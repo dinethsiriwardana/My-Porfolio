@@ -22,7 +22,7 @@ class TimeCircle extends StatelessWidget {
     // final GetTimeController getTimeController = Get.put(GetTimeController());
     double strokeWidth =
         ResponsiveSizer.Device.screenType == ResponsiveSizer.ScreenType.mobile
-            ? 10
+            ? 6
             : 15;
     return SizedBox(
       width: size,

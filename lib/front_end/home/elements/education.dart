@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
 import 'package:my_portfolio/util/colors.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class Education {
   BlockElement blockElement = BlockElement();
   UIColors uiColors = UIColors();
+
   Widget eduBlock() {
+    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 30,
+          SizedBox(
+            height: isMobi ? 20 : 30,
           ),
           Align(
               alignment: Alignment.center,
-              child: blockElement.hedText("EDUCATION", 2)),
-          const SizedBox(
-            height: 15,
+              child: blockElement.hedText("EDUCATION", isMobi ? 7 : 2)),
+          SizedBox(
+            height: isMobi ? 5 : 20,
           ),
           blockElement.singleDetailsBlock(
             "Jul 2021 - Present",
@@ -33,36 +36,45 @@ class Education {
             "A/L - Technology Stream",
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30.0, 10, 30, 10),
+            padding: isMobi
+                ? EdgeInsets.fromLTRB(15.0, 5, 15, 5)
+                : EdgeInsets.fromLTRB(30.0, 10, 30, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                blockElement.hedText("Linkedin Learning", 1.5),
-                blockElement.subText("Prompt Engineering", 1),
-                blockElement.subText("Learning GitHub Actions", 1),
-                blockElement.subText("Git Essential Training", 1),
+                blockElement.hedText("Linkedin Learning", isMobi ? 5 : 1.5),
+                blockElement.subText("Prompt Engineering", isMobi ? 3.5 : 1),
+                blockElement.subText(
+                    "Learning GitHub Actions", isMobi ? 3.5 : 1),
+                blockElement.subText(
+                    "Git Essential Training", isMobi ? 3.5 : 1),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30.0, 10, 30, 10),
+            padding: isMobi
+                ? EdgeInsets.fromLTRB(15.0, 5, 15, 5)
+                : EdgeInsets.fromLTRB(30.0, 10, 30, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                blockElement.hedText("Free Code Camp", 1.5),
-                blockElement.subText("Instagram Clone Using Laravel", 1),
-                blockElement.subText("Learni TypeScript", 1),
+                blockElement.hedText("Free Code Camp", isMobi ? 5 : 1.5),
+                blockElement.subText(
+                    "Instagram Clone Using Laravel", isMobi ? 3.5 : 1),
+                blockElement.subText("Learni TypeScript", isMobi ? 3.5 : 1),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30.0, 10, 30, 10),
+            padding: isMobi
+                ? EdgeInsets.fromLTRB(15.0, 5, 15, 5)
+                : EdgeInsets.fromLTRB(30.0, 10, 30, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                blockElement.hedText("Udemy", 1.5),
-                blockElement.subText("Flutter And Firebase", 1),
-                blockElement.subText("Three.js Basics", 1),
+                blockElement.hedText("Udemy", isMobi ? 5 : 1.5),
+                blockElement.subText("Flutter And Firebase", isMobi ? 3.5 : 1),
+                blockElement.subText("Three.js Basics", isMobi ? 3.5 : 1),
               ],
             ),
           ),
