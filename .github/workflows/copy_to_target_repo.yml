@@ -1,0 +1,21 @@
+name: Copy to Target Repository
+
+on:
+  workflow_dispatch: # This will enable manual triggering of the workflow.
+
+jobs:
+  copy_to_target_repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v2
+        with:
+          repository: dinethsiriwardana/My-Porfolio
+          ref: main # Or use the branch/tag you want to copy.
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: source-repo-artifact
+          path: . # This will include all files and folders in the artifact.
