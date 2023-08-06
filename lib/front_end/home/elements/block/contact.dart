@@ -12,7 +12,7 @@ class Contact {
     bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
 
     return GlassContainer(
-        width: 50.w,
+        width: isMobi ? 50.w : 13.w,
         height: 5.h,
         blur: 20,
         border: Border.all(

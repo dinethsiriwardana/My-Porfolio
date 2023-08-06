@@ -68,7 +68,7 @@ class BlockElement {
   Container programmingLicons(String image) {
     bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
 
-    double size = isMobi ? 6.5.w : 3.2.w;
+    double size = isMobi ? 6.5.w : 2.1.w;
     return Container(
       width: size,
       height: size,
