@@ -4,11 +4,12 @@ import 'package:my_portfolio/front_end/home/elements/about_me.dart';
 import 'package:my_portfolio/front_end/home/elements/education.dart';
 import 'package:my_portfolio/front_end/home/elements/block/side_block.dart';
 import 'package:my_portfolio/front_end/home/elements/experience.dart';
+import 'package:my_portfolio/front_end/home/elements/home.dart';
 import 'package:my_portfolio/front_end/home/elements/project.dart';
 
 class GetNavController extends GetxController {
   var navIndexDesktop = 0.obs;
-  var navIndexmobi = 1.obs;
+  var navIndexmobi = 0.obs;
   var navIndexarr = [0, 0].obs;
   var navOp = 0.0.obs;
   var currentBlock = Rx<Widget>(Align());
@@ -22,7 +23,7 @@ class GetNavController extends GetxController {
   //change navIndexmobi
   void changeNavIndexMobi(int index) {
     //check the number >=0 or  <=4
-    if (index >= 1 && index <= 4) {
+    if (index >= 0 && index <= 4) {
       navIndexmobi.value = index;
     }
 
@@ -33,7 +34,9 @@ class GetNavController extends GetxController {
     navOp.value = 0.0;
     Widget block = const SizedBox();
 
-    if (navIndexmobi == 1) {
+    if (navIndexmobi == 0) {
+      block = Home().homeBlock();
+    } else if (navIndexmobi == 1) {
       block = SideBlock(
         // block: A,
         block: AboutMe().aboutMeBlock(),
@@ -72,7 +75,12 @@ class GetNavController extends GetxController {
     navOp.value = 0.0;
     Align block = Align();
 
-    if (navIndexDesktop == 1) {
+    if (navIndexDesktop == 0) {
+      block = Align(
+        alignment: Alignment.centerRight,
+        child: Home().homeBlock(),
+      );
+    } else if (navIndexDesktop == 1) {
       block = Align(
         alignment: Alignment.centerRight,
         child: SideBlock(

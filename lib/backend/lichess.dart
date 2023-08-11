@@ -23,7 +23,6 @@ class Lichess {
       final data = jsonDecode(response.body);
       final nowPlaying = data['nowPlaying'];
       if (nowPlaying.isNotEmpty) {
-        print(data);
         // NowPlayingGame.fromJson(data);
         final game = nowPlaying[0];
         final fen = game['fen'];

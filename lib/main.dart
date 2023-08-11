@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:my_portfolio/backend/github.dart';
 import 'package:my_portfolio/backend/lichess.dart';
+import 'package:my_portfolio/backend/spotify.dart';
 import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -17,6 +19,10 @@ void main() {
   runApp(const MyApp());
   // runApp(const Test());
   Lichess lichess = Lichess();
+  Github github = Github();
+  github.userdata();
+  Spotify spotify = Spotify();
+  // spotify.getDetails();
 }
 
 class MyApp extends StatelessWidget {
