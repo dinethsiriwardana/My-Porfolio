@@ -26,7 +26,7 @@ class Home {
     return Column(
       children: [
         SizedBox(
-          height: isMobi ? 20 : 30,
+          height: isMobi ? 20 : 15,
         ),
         Padding(
           padding: const EdgeInsets.all(4.0),
