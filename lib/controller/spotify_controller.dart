@@ -42,8 +42,8 @@ class GetSpotifyController extends GetxController {
       return '';
     }
 
-    int maxLength = isMobi ? 15 : 20;
-    // int maxLength = 20;
+    // int maxLength = isMobi ? 15 : 20;
+    int maxLength = 20;
     if (input.length <= maxLength) {
       return input;
     }
