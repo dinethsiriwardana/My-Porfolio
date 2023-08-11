@@ -43,7 +43,7 @@ class _HomePageMState extends State<HomePageM> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           alignment: Alignment.bottomLeft,
-          image: AssetImage("/image/bg.jpg"),
+          image: AssetImage("/image/bgm.jpg"),
           fit: BoxFit.cover,
         ),
       ),
@@ -70,9 +70,9 @@ class _HomePageMState extends State<HomePageM> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Obx(
-              //   () => navContainer(0),
-              // ),
+              Obx(
+                () => navContainer(0),
+              ),
               Obx(
                 () => navContainer(1),
               ),

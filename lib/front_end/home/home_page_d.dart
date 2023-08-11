@@ -36,6 +36,7 @@ class _HomePageDState extends State<HomePageD> {
 
   void initState() {
     super.initState();
+    getNavController.changeNavUI();
     getTimeController.startTimerSec();
     getTimeController.startTimerMin();
     getTimeController.startTimerhour();
@@ -48,89 +49,56 @@ class _HomePageDState extends State<HomePageD> {
 
     return Scaffold(
       body: Container(
-        child: PreloadPageView.builder(
-          preloadPagesCount: 5,
-          controller: PreloadPageController(initialPage: 1),
-          onPageChanged: (int position) {
-            print('page changed. current: $position');
-          },
-          itemBuilder: (BuildContext context, int position) => Container(
-            padding: const EdgeInsets.all(30),
-            height: 100.h,
-            width: 100.w,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("/image/bg.jpg"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                const CenterModel(),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      blockElement.mainText("Hello", 1.8),
-                      blockElement.mainText("I'm Dineth Siriwardhana", 2.2),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Obx(() {
-                        return InkWell(
-                          child: blockElement.navText("ABOUT ME", 1.2,
-                              getNavController.navIndexDesktop.value == 1),
-                          onTap: () {
-                            getNavController.changeNavOp(0.0);
-                            getNavController.changeNavIndex(1);
-                          },
-                        );
-                      }),
-                      Obx(() {
-                        return InkWell(
-                          child: blockElement.navText("EDUCATION", 1.2,
-                              getNavController.navIndexDesktop.value == 2),
-                          onTap: () {
-                            getNavController.changeNavOp(0.0);
-                            getNavController.changeNavIndex(2);
-                          },
-                        );
-                      }),
-                      Obx(() {
-                        return InkWell(
-                          child: blockElement.navText("EXPERIENCE", 1.2,
-                              getNavController.navIndexDesktop.value == 3),
-                          onTap: () {
-                            getNavController.changeNavOp(0.0);
-                            getNavController.changeNavIndex(3);
-                          },
-                        );
-                      }),
-                      Obx(() {
-                        return InkWell(
-                          child: blockElement.navText("PROJECTS", 1.2,
-                              getNavController.navIndexDesktop.value == 4),
-                          onTap: () {
-                            getNavController.changeNavOp(0.0);
-                            getNavController.changeNavIndex(4);
-                          },
-                        );
-                      }),
-                    ],
-                  ),
-                ),
-                Obx(() {
-                  return getNavController.currentBlock.value;
-                }),
-                Align(
-                    alignment: Alignment.bottomRight,
-                    child: Contact().contact()),
-              ],
-            ) /* add child content here */,
+        padding: const EdgeInsets.all(30),
+        height: 100.h,
+        width: 100.w,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("/image/bg.jpg"),
+            fit: BoxFit.cover,
           ),
         ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            const CenterModel(),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  blockElement.mainText("Hello", 1.8),
+                  blockElement.mainText("I'm Dineth Siriwardhana", 2.2),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                ],
+              ),
+            ),
+            Obx(() {
+              return getNavController.currentBlock.value;
+            }),
+            Align(alignment: Alignment.bottomRight, child: Contact().contact()),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Obx(() {
+                return Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      blockElement.desktopNav("HOME", 0),
+                      blockElement.desktopNav("ABOUT ME", 1),
+                      blockElement.desktopNav("EDUCATION", 2),
+                      blockElement.desktopNav("EXPERIENCE", 3),
+                      blockElement.desktopNav("PROJECTS", 4),
+                    ],
+                  ),
+                );
+              }),
+            ),
+          ],
+        ) /* add child content here */,
       ),
     );
   }

@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
 import 'package:my_portfolio/util/colors.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:responsive_sizer/responsive_sizer.dart' as ResponsiveSizer;
 
 class Contact {
   final UIColors uiColors = UIColors();
   BlockElement blockElement = BlockElement();
 
   GlassContainer contact() {
-    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
+    bool isMobi =
+        ResponsiveSizer.Device.screenType == ResponsiveSizer.ScreenType.mobile
+            ? true
+            : false;
 
     return GlassContainer(
         width: isMobi ? 50.w : 13.w,

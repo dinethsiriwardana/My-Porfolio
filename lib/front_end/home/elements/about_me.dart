@@ -91,6 +91,7 @@ class AboutMe {
               blockElement.programmingLicons('mongo'),
             ],
           ),
+          isMobi ? SizedBox(height: 20) : SizedBox(height: 0),
         ],
       ),
     );

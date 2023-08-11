@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio/controller/nav_controller.dart';
 import 'package:my_portfolio/util/colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:js' as js;
+import 'package:responsive_sizer/responsive_sizer.dart' as ResponsiveSizer;
 
 class BlockElement {
   UIColors uiColors = UIColors();
-  bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
+  final GetNavController getNavController = Get.put(GetNavController());
+  bool isMobi =
+      Device.screenType == ResponsiveSizer.ScreenType.mobile ? true : false;
 
   Padding singleDetailsBlock(
       String date, String location, String type, String details) {
@@ -49,8 +55,6 @@ class BlockElement {
   }
 
   Container programmingLicon(String image) {
-    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
-
     double size = isMobi ? 10.w : 3.2.w;
     return Container(
       width: size,
@@ -66,7 +70,8 @@ class BlockElement {
   }
 
   Container programmingLicons(String image) {
-    bool isMobi = Device.screenType == ScreenType.mobile ? true : false;
+    bool isMobi =
+        Device.screenType == ResponsiveSizer.ScreenType.mobile ? true : false;
 
     double size = isMobi ? 6.5.w : 2.1.w;
     return Container(
@@ -131,11 +136,58 @@ class BlockElement {
       text,
       style: GoogleFonts.prompt(
         textStyle: TextStyle(
-          color: uiColors.lightblue.withOpacity(opacity),
+          color: uiColors.red.withOpacity(opacity),
           fontWeight: FontWeight.bold,
           fontSize: size.w,
         ),
       ),
     );
+  }
+
+  InkWell desktopNav(String text, int index) {
+    return InkWell(
+      child:
+          navText(text, 1.4, getNavController.navIndexDesktop.value == index),
+      onTap: () {
+        getNavController.changeNavOp(0.0);
+        getNavController.changeNavIndex(index);
+      },
+    );
+  }
+
+  GlassContainer homefiles(Widget block) {
+    double width = 0, height = 0;
+
+    if (isMobi) {
+      width = 90.w;
+      height = 10.h;
+    } else {
+      width = 25.w;
+      height = 10.h;
+    }
+    return GlassContainer(
+        width: width,
+        height: height,
+        blur: 20,
+        border: Border.all(
+          color: uiColors.lightblue.withOpacity(0.3),
+          width: 1,
+        ),
+        shadowStrength: 5,
+        // shape: BoxShape.circle,
+        borderRadius: BorderRadius.circular(20),
+        shadowColor: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.20),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.white.withOpacity(0.2),
+            Colors.blue.withOpacity(0.3),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: block,
+        ));
   }
 }
