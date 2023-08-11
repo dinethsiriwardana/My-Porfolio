@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_portfolio/controller/github_controller.dart';
@@ -8,14 +9,24 @@ import 'package:my_portfolio/util/encrypt.dart';
 class Github {
   GetGithubController getGithubController = Get.put(GetGithubController());
 
-  String authKey0 = "";
-  String authKey1 = "cSU3Rhb2GK1m2wY";
-  String authKey2 = "wyObkIF42PnMAsE3DG7De";
-  String authKey3 = "ghp_";
+  String authKey = "";
+  Github() {
+    try {
+      getEnv();
+    } catch (e) {
+      print(e);
+    }
+
+    userdata();
+  }
+
+  getEnv() async {
+    authKey = dotenv.env['GITHUB_API']!;
+    // print(auth);
+  }
 
   // String auth = "your_auth_key_here"; // Replace with your actual auth key
   Future<void> userdata() async {
-    String authKey = authKey3 + authKey0 + authKey1 + authKey2;
     const url = 'https://api.github.com/users/dinethsiriwardana';
     final response = await http.get(Uri.parse(url), headers: {
       'Accept': 'application/json',
@@ -34,7 +45,6 @@ class Github {
 
   Future<void> userStars() async {
     // String authKey = authKey0 + authKey1 + authKey2 + authKey3;
-    String authKey = authKey3 + authKey0 + authKey1 + authKey2;
 
     const url = 'https://api.github.com/users/dinethsiriwardana/repos';
     final response = await http.get(Uri.parse(url), headers: {
