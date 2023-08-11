@@ -59,9 +59,9 @@ class GetTimeController extends GetxController {
       double currentHour = now.hour >= 13 ? now.hour - 12 : now.hour as double;
       double currentMin = now.minute as double;
 
-      print(currentHour + (currentMin / 100));
+      // print(currentHour + (currentMin / 100));
       progressValueHour.value = (currentHour + (currentMin / 100)) / 12;
-      print(progressValueHour.value);
+      // print(progressValueHour.value);
 
       Timer.periodic(Duration(minutes: 1), (timer) {
         // currentHour = currentHour + 0.04;
@@ -72,8 +72,8 @@ class GetTimeController extends GetxController {
         double currentMin = now.minute as double;
 
         progressValueHour.value = (currentHour + (currentMin / 100)) / 12;
-        print(
-            "${currentHour + (currentMin / 100)} = ${progressValueHour.value}");
+        // print(
+        // "${currentHour + (currentMin / 100)} = ${progressValueHour.value}");
         if (progressValueHour.value >= 1.0) {
           progressValueHour.value = 0.0;
         }

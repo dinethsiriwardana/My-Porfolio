@@ -7,7 +7,7 @@ class GetGithubController extends GetxController {
   var githubFollowers = 0.obs;
   var githubStars = 0.obs;
   var githubLUpdate = 0.obs;
-  var githubLAgoText = "".obs;
+  var githubLAgoText = "_".obs;
 
   //changeGithubLUpdate
   void changeGithubLUpdate(int time) {

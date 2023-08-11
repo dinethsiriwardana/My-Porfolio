@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/controller/github_controller.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
 import 'package:my_portfolio/util/colors.dart';
@@ -73,12 +75,48 @@ class GithubBlock {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  blockElement.hedText("Last Update", isMobi ? 2 : 0.5),
-                  blockElement.hedText(
-                      getGithubController.githubLUpdate.value.toString(),
-                      isMobi ? 5 : 1.4),
-                  blockElement.hedText(getGithubController.githubLAgoText.value,
-                      isMobi ? 1.8 : 0.45),
+                  AutoSizeText(
+                    'Last Update',
+                    style: GoogleFonts.prompt(
+                      textStyle: TextStyle(
+                        color: uiColors.darkblue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: isMobi ? 1.8.w : 8,
+                      ),
+                    ),
+                    maxFontSize: 10,
+                    minFontSize: 1,
+                    // maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  AutoSizeText(
+                    getGithubController.githubLUpdate.value.toString(),
+                    style: GoogleFonts.prompt(
+                      textStyle: TextStyle(
+                        color: uiColors.darkblue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: isMobi ? 20 : 20,
+                      ),
+                    ),
+                    maxFontSize: 20,
+                    minFontSize: 15,
+                    // maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  AutoSizeText(
+                    getGithubController.githubLAgoText.value,
+                    style: GoogleFonts.prompt(
+                      textStyle: TextStyle(
+                        color: uiColors.darkblue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: isMobi ? 1.7.w : 10,
+                      ),
+                    ),
+                    maxFontSize: 10,
+                    minFontSize: 1,
+                    // maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  )
                 ],
               ),
             ),
@@ -93,8 +131,8 @@ class GithubBlock {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        blockElement.hedText(text, isMobi ? 3.5 : 0.75),
-        blockElement.hedText(count.toString(), isMobi ? 3.5 : 1.1),
+        blockElement.hedText(text, isMobi ? 3.5 : 0.65),
+        blockElement.hedText(count.toString(), isMobi ? 3.5 : 1),
       ],
     );
   }

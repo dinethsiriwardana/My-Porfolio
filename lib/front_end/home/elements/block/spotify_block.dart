@@ -34,24 +34,36 @@ class SpotifyBlock {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      blockElement.subText(
-                          (getSpotifyController.spotifyOnPlay.value
-                              ? "Now Playing"
-                              : "Latest Saved"),
-                          isMobi ? 3.5 : 0.8),
-                      blockElement.hedText(
-                          getSpotifyController.spotifySongName.value,
-                          isMobi ? 4.5 : 1.2),
-                      blockElement.subText(
-                          getSpotifyController.spotifySongArtist.value,
-                          isMobi ? 3.5 : 1),
-                    ],
+                SizedBox(
+                  height: size,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Stack(
+                      // mainAxisSize: MainAxisSize.max,
+
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: blockElement.subText(
+                              (getSpotifyController.spotifyOnPlay.value
+                                  ? "Now Playing"
+                                  : "Latest Saved"),
+                              isMobi ? 3.5 : 0.8),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: blockElement.hedText(
+                              getSpotifyController.spotifySongName.value,
+                              isMobi ? 4.5 : 1.2),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: blockElement.subText(
+                              getSpotifyController.spotifySongArtist.value,
+                              isMobi ? 3 : 0.9),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -73,17 +85,6 @@ class SpotifyBlock {
           ],
         ),
       ),
-    );
-  }
-
-  Column gitModel(String text, int count) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        blockElement.hedText(text, 0.75),
-        blockElement.hedText(count.toString(), 1.1),
-      ],
     );
   }
 }

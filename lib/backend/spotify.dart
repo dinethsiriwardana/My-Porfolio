@@ -22,7 +22,11 @@ class Spotify {
     await getLastSavedSong();
     await getSong();
     Timer.periodic(Duration(seconds: 5), (result) async {
-      await getSong();
+      try {
+        await getSong();
+      } catch (e) {
+        print("From getSong" + e.toString());
+      }
     });
   }
 

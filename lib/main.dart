@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_portfolio/backend/github.dart';
@@ -15,14 +16,17 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 // void main() {
 //   // runApp(const MyApp());
 // }
-void main() {
+Future<void> main() async {
+  await dotenv.load(
+    fileName: ".env",
+  );
+
   runApp(const MyApp());
-  // runApp(const Test());
+
   Lichess lichess = Lichess();
   Github github = Github();
-  github.userdata();
+  // github.userdata();
   Spotify spotify = Spotify();
-  // spotify.getDetails();
 }
 
 class MyApp extends StatelessWidget {

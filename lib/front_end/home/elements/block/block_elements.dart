@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
@@ -87,8 +88,9 @@ class BlockElement {
     );
   }
 
-  Text subText(String text, double size) {
-    return Text(
+  AutoSizeText subText(String text, double size) {
+    // print(text + '${size.w}');
+    return AutoSizeText(
       text,
       textAlign: TextAlign.center,
       style: GoogleFonts.prompt(
@@ -98,13 +100,29 @@ class BlockElement {
           fontSize: size.w,
         ),
       ),
+      maxFontSize: 20,
+      minFontSize: 1,
+      maxLines: 6,
+      overflow: TextOverflow.ellipsis,
     );
   }
 
-  Text hedText(String text, double size) {
-    return Text(
+  AutoSizeText hedText(String text, double size) {
+    // print(text + '${size.w}');
+    return
+        // Text(
+        //   text,
+        //   textAlign: TextAlign.left,
+        //   style: GoogleFonts.prompt(
+        //     textStyle: TextStyle(
+        //       color: uiColors.darkblue,
+        //       fontWeight: FontWeight.bold,
+        //       fontSize: size.w,
+        //     ),
+        //   ),
+        // );
+        AutoSizeText(
       text,
-      textAlign: TextAlign.left,
       style: GoogleFonts.prompt(
         textStyle: TextStyle(
           color: uiColors.darkblue,
@@ -112,10 +130,16 @@ class BlockElement {
           fontSize: size.w,
         ),
       ),
+      maxFontSize: 30,
+      minFontSize: 1,
+      // maxLines: 4,
+      overflow: TextOverflow.ellipsis,
     );
   }
 
   Text mainText(String text, double size) {
+    // print(text + '${size.w}');
+
     return Text(
       text,
       textAlign: TextAlign.center,
@@ -163,7 +187,7 @@ class BlockElement {
       height = 10.h;
     } else {
       width = 25.w;
-      height = 10.h;
+      height = 5.5.w;
     }
     return GlassContainer(
         width: width,
