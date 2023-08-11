@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:encrypt/encrypt.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_portfolio/controller/github_controller.dart';
