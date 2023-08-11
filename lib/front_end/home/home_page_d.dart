@@ -37,9 +37,9 @@ class _HomePageDState extends State<HomePageD> {
   void initState() {
     super.initState();
     getNavController.changeNavUI();
-    // getTimeController.startTimerSec();
-    // getTimeController.startTimerMin();
-    // getTimeController.startTimerhour();
+    getTimeController.startTimerSec();
+    getTimeController.startTimerMin();
+    getTimeController.startTimerhour();
   }
 
   BlockElement blockElement = BlockElement();

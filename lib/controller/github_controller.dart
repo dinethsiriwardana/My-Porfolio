@@ -24,6 +24,7 @@ class GetGithubController extends GetxController {
   }
 
   void changeGithubData(Map data) {
+    // print('data: $data');
     githubUsername.value = data['login'];
     githubPublicRepos.value =
         data['public_repos'] + data['total_private_repos'];
