@@ -49,8 +49,8 @@ dependencies:
   preload: ^2.0.0
   flutter_dotenv: ^5.1.0
   auto_size_text: ^3.0.0
-  firebase_core: ^2.15.0
-  firebase_database: ^10.2.4
+  # firebase_core: ^2.15.0
+  # firebase_database: ^10.2.4
   timeago: ^3.5.0
 
 dev_dependencies:

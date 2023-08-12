@@ -2,27 +2,22 @@
 <html>
 
 <head>
-  <!-- Your existing head content here -->
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-  <style>
-    /* Preloader styles */
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-    #preloader .loading-text {
-      font-size: 18px;
-    }
-  </style>
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+  <!-- <base href="dineth.me"> -->
+  <!-- <base href="https://dinethsiriwardana.github.io/dineth.me-v2/"> -->
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -42,35 +37,22 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = "2631928192";
+    var serviceWorkerVersion = "1577154507";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 
 <body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="loading-text">Loading...</div>
-  </div>
-
-  <!-- Your existing script for Flutter initialization -->
   <script>
     window.addEventListener('load', function (ev) {
-      // Hide preloader once the Flutter app is initialized
-      function hidePreloader() {
-        var preloader = document.getElementById('preloader');
-        preloader.style.display = 'none';
-      }
-
+      // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
         onEntrypointLoaded: function (engineInitializer) {
           engineInitializer.initializeEngine().then(function (appRunner) {
-            // Hide preloader and run the Flutter app
-            hidePreloader();
             appRunner.runApp();
           });
         }

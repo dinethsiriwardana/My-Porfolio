@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -20,19 +21,26 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 //   // runApp(const MyApp());
 // }
 Future<void> main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // log("message");
+  // WidgetsFlutterBinding.ensureInitialized();
+
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   await dotenv.load(
     fileName: ".env",
   );
   runApp(const MyApp());
-
-  Lichess lichess = Lichess();
-  Github github = Github();
-  // github.userdata();
-  Spotify spotify = Spotify();
-  VsCode vsCode = VsCode();
+  try {
+    Lichess lichess = Lichess();
+    Github github = Github();
+    // github.userdata();
+    Spotify spotify = Spotify();
+    // VsCode vsCode = VsCode();
+  } catch (e) {
+    print(e);
+    log(e.toString());
+  }
 }
 
 class MyApp extends StatelessWidget {

@@ -14,7 +14,7 @@ class Home {
   BlockElement blockElement = BlockElement();
   UIColors uiColors = UIColors();
   bool isMobi = rs.Device.screenType == rs.ScreenType.mobile ? true : false;
-  GetVsCodeController getvsCodeController = Get.put(GetVsCodeController());
+  // GetVsCodeController getvsCodeController = Get.put(GetVsCodeController());
   Widget homeBlock() {
     return isMobi
         ? SizedBox(
@@ -24,29 +24,32 @@ class Home {
         : columnBlock();
   }
 
-  Obx columnBlock() {
-    return Obx(
-      () => Column(
-        children: [
-          SizedBox(
-            height: isMobi ? 20 : 15,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: SpotifyBlock().spotifySmall(),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: GithubBlock().githubSmall(),
-          ),
-          getvsCodeController.vsCodestts.value == 1
-              ? Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: VsCodeBlock().vsCodeSmall(),
-                )
-              : SizedBox(),
-        ],
-      ),
+  Column columnBlock() {
+    // Obx columnBlock() {
+    return
+        // Obx(
+        //   () =>
+        Column(
+      children: [
+        SizedBox(
+          height: isMobi ? 20 : 15,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: SpotifyBlock().spotifySmall(),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: GithubBlock().githubSmall(),
+        ),
+        // getvsCodeController.vsCodestts.value == 1
+        //     ? Padding(
+        //         padding: const EdgeInsets.all(4.0),
+        //         child: VsCodeBlock().vsCodeSmall(),
+        //       )
+        //     : SizedBox(),
+      ],
+      // ),
     );
   }
 }
