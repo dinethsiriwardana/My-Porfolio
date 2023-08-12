@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_portfolio/backend/github.dart';
@@ -17,26 +17,23 @@ import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-// void main() {
-//   // runApp(const MyApp());
-// }
 Future<void> main() async {
-  // log("message");
-  // WidgetsFlutterBinding.ensureInitialized();
+  log("message");
+  WidgetsFlutterBinding.ensureInitialized();
 
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-  await dotenv.load(
-    fileName: ".env",
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+  // await dotenv.load(
+  //   fileName: ".env",
+  // );
   runApp(const MyApp());
   try {
     Lichess lichess = Lichess();
     Github github = Github();
     // github.userdata();
     Spotify spotify = Spotify();
-    // VsCode vsCode = VsCode();
+    VsCode vsCode = VsCode();
   } catch (e) {
     print(e);
     log(e.toString());
