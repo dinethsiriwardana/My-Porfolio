@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -9,6 +10,8 @@ import 'package:http/http.dart' as http;
 import 'package:my_portfolio/backend/github.dart';
 import 'package:my_portfolio/backend/lichess.dart';
 import 'package:my_portfolio/backend/spotify.dart';
+import 'package:my_portfolio/backend/vscode.dart';
+import 'package:my_portfolio/firebase_options.dart';
 import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -17,16 +20,19 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 //   // runApp(const MyApp());
 // }
 Future<void> main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await dotenv.load(
     fileName: ".env",
   );
-
   runApp(const MyApp());
 
   Lichess lichess = Lichess();
   Github github = Github();
   // github.userdata();
   Spotify spotify = Spotify();
+  VsCode vsCode = VsCode();
 }
 
 class MyApp extends StatelessWidget {
