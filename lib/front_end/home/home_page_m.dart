@@ -42,10 +42,10 @@ class _HomePageMState extends State<HomePageM> {
       padding: const EdgeInsets.all(20),
       height: 100.h,
       width: 100.w,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          alignment: Alignment.bottomLeft,
-          image: AssetImage("/image/bgm.jpg"),
+      decoration: BoxDecoration(
+        color: uiColors.bg,
+        image: const DecorationImage(
+          image: AssetImage("/image/bg.jpg"),
           fit: BoxFit.cover,
         ),
       ),
