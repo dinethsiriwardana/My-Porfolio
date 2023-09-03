@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -18,20 +19,16 @@ import 'package:my_portfolio/test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 Future<void> main() async {
-  log("message");
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // await dotenv.load(
-  //   fileName: ".env",
-  // );
+
   runApp(const MyApp());
   try {
-    Lichess lichess = Lichess();
-    Github github = Github();
-    // github.userdata();
+    Github github = Github(); // github.userdata();
     Spotify spotify = Spotify();
     VsCode vsCode = VsCode();
   } catch (e) {

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_swipe_detector/flutter_swipe_detector.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio/controller/nav_controller.dart';
@@ -29,6 +30,7 @@ class _HomePageMState extends State<HomePageM> {
     getTimeController.startTimerMin();
     getTimeController.startTimerhour();
     getNavController.changeNavUIMobi();
+    FlutterNativeSplash.remove();
   }
 
   BlockElement blockElement = BlockElement();

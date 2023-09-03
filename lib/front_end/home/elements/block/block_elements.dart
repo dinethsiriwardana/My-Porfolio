@@ -133,7 +133,7 @@ class BlockElement {
       maxFontSize: 30,
       minFontSize: 1,
       // maxLines: 4,
-      overflow: TextOverflow.ellipsis,
+      // overflow: TextOverflow.ellipsis,
     );
   }
 

@@ -52,6 +52,7 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_database: ^10.2.4
   timeago: ^3.5.0
+  flutter_native_splash: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,13 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+flutter_native_splash:
+  image: image/intro.png
+  color: 1f2328
+  android: false
+  ios: false
+  # web: false
+
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

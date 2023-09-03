@@ -20,7 +20,7 @@ class GetVsCodeController extends GetxController {
   }
 
   void changeData(Map data) {
-    print(data);
+    // print(data);
     if (data['stts'] == 1) {
       if (data['language'] == null) {
         vsCodelanguage.value = "Shhhhhhh";
