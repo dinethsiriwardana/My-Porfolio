@@ -109,7 +109,7 @@ class GithubBlock {
                       textStyle: TextStyle(
                         color: uiColors.darkblue,
                         fontWeight: FontWeight.bold,
-                        fontSize: isMobi ? 1.7.w : 10,
+                        fontSize: isMobi ? 1.7.w : 4.w,
                       ),
                     ),
                     maxFontSize: 10,

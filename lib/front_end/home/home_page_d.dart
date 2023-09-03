@@ -1,6 +1,7 @@
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
@@ -40,6 +41,7 @@ class _HomePageDState extends State<HomePageD> {
     getTimeController.startTimerSec();
     getTimeController.startTimerMin();
     getTimeController.startTimerhour();
+    FlutterNativeSplash.remove();
   }
 
   BlockElement blockElement = BlockElement();
@@ -52,8 +54,9 @@ class _HomePageDState extends State<HomePageD> {
         padding: const EdgeInsets.all(30),
         height: 100.h,
         width: 100.w,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
+        decoration: BoxDecoration(
+          color: uiColors.bg,
+          image: const DecorationImage(
             image: AssetImage("/image/bg.jpg"),
             fit: BoxFit.cover,
           ),

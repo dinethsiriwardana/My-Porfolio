@@ -15,7 +15,11 @@ class Spotify {
       "BQAueCRFxwf0b_4LcI8B7lbZMS1VMwI98i6hbUaQ3Q16p4RZr_f9GIBUIBwA_vApBTHRBweQboAtTvSPZDdGPv_lEAMH89Gb9RhiMsDzp2DdjX5tLZsHFy0aUkmBRSjrsy_-US4L73X0a7rAmW5EsAQY3eEjtJTYriymtX3Wpp8eCDXm8xt_cYtQlvG3KpWOb7AkN3n-rl5KLsnJYe4j2xIDX1qLVKUSpBYr4Ct7jEUQVgmfS2YbGpnTYWUVCr7TGJsoRryO5YEd-j5lNEv7-jafuj4dEaiDv6PBfS44JoHZrNpnCwqV_5X-LPXdxg";
 
   Spotify() {
-    getStart();
+    try {
+      getStart();
+    } catch (e) {
+      print(e);
+    }
   }
   Future<void> getStart() async {
     _token = await getAuth();
