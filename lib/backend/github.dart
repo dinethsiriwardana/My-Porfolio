@@ -91,10 +91,10 @@ class Github {
     String githubLAgoText = "";
     if (difference.inSeconds < 60) {
       githubLUpdate = difference.inSeconds;
-      githubLAgoText = 'seconds ago';
+      githubLAgoText = 'sec ago';
     } else if (difference.inMinutes < 60) {
       githubLUpdate = difference.inMinutes;
-      githubLAgoText = 'minutes ago';
+      githubLAgoText = 'min ago';
     } else if (difference.inHours < 24) {
       githubLUpdate = difference.inHours;
       githubLAgoText = 'hours ago';
