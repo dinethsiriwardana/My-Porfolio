@@ -48,3 +48,4 @@ app.*.map.json
 .env
 # lib/backend/github_api.dart
 .env
+lib/backend/github_api.dart
