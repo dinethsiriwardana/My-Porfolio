@@ -50,3 +50,4 @@ app.*.map.json
 # lib/backend/github_api.dart
 .env
 build/web/assets/.env
+build/web/assets/.env
