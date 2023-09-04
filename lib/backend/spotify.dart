@@ -7,12 +7,10 @@ import 'package:my_portfolio/controller/spotify_controller.dart';
 
 class Spotify {
   GetSpotifyController getSpotifyController = Get.put(GetSpotifyController());
-  final String _clientId = "bf94d731016149fb8c43e58f254b685c";
-  final String _clientSecret = "6fdb61e6b9d842dca1f9d78140e725bb";
-  final String _refresh_token =
-      "AQAN-CkRDgSzr5QvZpxmuVzWvuRTJ2-yztfrrVY7YDwXFP1_FvlKBeEjik93LG4IyxV7Rdlo_nF2x2TRVLjBjIE7uoxyZ2b6nJw5AoXauwQRHQZssD2dBF_1DsmpNOA53fc";
-  String _token =
-      "BQAueCRFxwf0b_4LcI8B7lbZMS1VMwI98i6hbUaQ3Q16p4RZr_f9GIBUIBwA_vApBTHRBweQboAtTvSPZDdGPv_lEAMH89Gb9RhiMsDzp2DdjX5tLZsHFy0aUkmBRSjrsy_-US4L73X0a7rAmW5EsAQY3eEjtJTYriymtX3Wpp8eCDXm8xt_cYtQlvG3KpWOb7AkN3n-rl5KLsnJYe4j2xIDX1qLVKUSpBYr4Ct7jEUQVgmfS2YbGpnTYWUVCr7TGJsoRryO5YEd-j5lNEv7-jafuj4dEaiDv6PBfS44JoHZrNpnCwqV_5X-LPXdxg";
+  final String _clientId = "";
+  final String _clientSecret = "";
+  final String _refresh_token = "";
+  String _token = "";
 
   Spotify() {
     try {
