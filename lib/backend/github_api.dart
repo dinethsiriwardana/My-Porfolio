@@ -1,0 +1,3 @@
+class GHApi {
+  String authKey = '';
+}
