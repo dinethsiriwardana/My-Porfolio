@@ -131,8 +131,8 @@ class GithubBlock {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        blockElement.hedText(text, isMobi ? 3.5 : 0.65),
-        blockElement.hedText(count.toString(), isMobi ? 3.5 : 1),
+        blockElement.hedText(text, isMobi ? 3 : 0.65),
+        blockElement.hedText(count.toString(), isMobi ? 3.2 : 1),
       ],
     );
   }

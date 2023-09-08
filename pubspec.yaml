@@ -54,6 +54,10 @@ dependencies:
   timeago: ^3.5.0
   flutter_native_splash: ^2.3.2
   cached_network_image: ^3.2.3
+  geolocator: ^10.0.0
+  shared_preferences: ^2.2.1
+  flutter_launcher_icons: ^0.13.1
+  stroke_text: ^0.0.2
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +81,12 @@ flutter_native_splash:
   ios: false
   # web: false
 
+flutter_launcher_icons:
+  web:
+    generate: true
+    image_path: "image/my.png"
+    # background_color: "#hexcode"
+    # theme_color: "#hexcode"
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

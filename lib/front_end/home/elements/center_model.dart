@@ -40,27 +40,24 @@ class _CenterModelState extends State<CenterModel> {
           //Circle Clip
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
-            // image: DecorationImage(
-            //   image: AssetImage("/image/my.png"),
-            //   fit: BoxFit.cover,
-            // ),
+            image: DecorationImage(
+              image: AssetImage("/image/my.png"),
+              fit: BoxFit.cover,
+            ),
           ),
 
           height: wsize,
           width: wsize,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(180.0),
-            child: CachedNetworkImage(
-              imageUrl: "/image/my.png",
-              placeholder: (context, url) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CircularProgressIndicator(
-                  color: uiColors.lightblue,
-                ),
-              ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
-          ),
+          // child: CachedNetworkImage(
+          //   imageUrl: "/image/my.png",
+          //   placeholder: (context, url) => Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: CircularProgressIndicator(
+          //       color: uiColors.lightblue,
+          //     ),
+          //   ),
+          //   errorWidget: (context, url, error) => Icon(Icons.error),
+          // ),
         ),
         Obx(
           () => TimeCircle(

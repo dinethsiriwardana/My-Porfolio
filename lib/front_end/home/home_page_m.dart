@@ -3,15 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_swipe_detector/flutter_swipe_detector.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio/backend/review.dart';
 import 'package:my_portfolio/controller/nav_controller.dart';
+import 'package:my_portfolio/controller/review_controller.dart';
 import 'package:my_portfolio/controller/time_controller.dart';
 import 'package:my_portfolio/front_end/home/elements/about_me.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
 import 'package:my_portfolio/front_end/home/elements/block/contact.dart';
+import 'package:my_portfolio/front_end/home/elements/block/review_block.dart';
 import 'package:my_portfolio/front_end/home/elements/block/side_block.dart';
 import 'package:my_portfolio/front_end/home/elements/center_model.dart';
 import 'package:my_portfolio/util/colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stroke_text/stroke_text.dart';
 
 class HomePageM extends StatefulWidget {
   const HomePageM({super.key});
@@ -23,6 +29,8 @@ class HomePageM extends StatefulWidget {
 class _HomePageMState extends State<HomePageM> {
   final GetTimeController getTimeController = Get.put(GetTimeController());
   final GetNavController getNavController = Get.put(GetNavController());
+  final GetReviewController getReviewController =
+      Get.put(GetReviewController());
   final UIColors uiColors = UIColors();
   void initState() {
     super.initState();
@@ -35,6 +43,21 @@ class _HomePageMState extends State<HomePageM> {
 
   BlockElement blockElement = BlockElement();
 
+  void showreview() async {
+    try {
+      final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+      final SharedPreferences prefs = await _prefs;
+      // await prefs.remove('reviewed');
+
+      if (prefs.getBool('reviewed') != null && prefs.getBool('reviewed')!) {
+        print(prefs.getBool('reviewed'));
+        getReviewController.changeIsReviewed(true);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +68,8 @@ class _HomePageMState extends State<HomePageM> {
       decoration: BoxDecoration(
         color: uiColors.bg,
         image: const DecorationImage(
-          image: AssetImage("/image/bg.jpg"),
-          fit: BoxFit.cover,
+          image: AssetImage("/image/bgm.jpg"),
+          fit: BoxFit.fill,
         ),
       ),
       child: Column(
@@ -60,6 +83,20 @@ class _HomePageMState extends State<HomePageM> {
               children: [
                 blockElement.mainText("Hello I'm", 5),
                 blockElement.mainText("Dineth Siriwardhana", 7),
+                StrokeText(
+                  text: "A DEVELOPER",
+                  textStyle: GoogleFonts.ubuntu(
+                    textStyle: TextStyle(
+                      color: uiColors.green.withOpacity(0),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 6.w,
+                    ),
+                  ),
+                  strokeColor: uiColors.darkblue,
+                ),
+                SizedBox(
+                  height: 10,
+                )
               ],
             ),
           ),
@@ -96,16 +133,22 @@ class _HomePageMState extends State<HomePageM> {
             onSwipeLeft: (offset) {
               getNavController
                   .changeNavIndexMobi(getNavController.navIndexmobi.value + 1);
-              print(getNavController.navIndexmobi.value);
+              // print(getNavController.navIndexmobi.value);
             },
             onSwipeRight: (offset) {
               getNavController
                   .changeNavIndexMobi(getNavController.navIndexmobi.value - 1);
-              print(getNavController.navIndexmobi.value);
+              // print(getNavController.navIndexmobi.value);
             },
             child: Obx(() {
               return getNavController.currentBlocMobi.value;
             }),
+          ),
+          Obx(() {
+            return Review().reviewGlass();
+          }),
+          SizedBox(
+            height: 5,
           ),
           Contact().contact()
         ],

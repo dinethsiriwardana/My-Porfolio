@@ -16,7 +16,7 @@ class SideBlock extends StatelessWidget {
     double width = 0, height = 0;
     if (Device.screenType == ScreenType.mobile) {
       width = 90.w;
-      height = 53.h;
+      height = 48.h;
     } else {
       width = 27.w;
       height = 70.h;
