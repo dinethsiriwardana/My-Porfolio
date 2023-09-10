@@ -17,12 +17,13 @@
   -->
   <base href="$FLUTTER_BASE_HREF">
 
-
-
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="dineth.me">
+  <meta name="keywords" content="dineth, dineth.me, dinethsiriwardana">
+  <meta name="author" content="dineth">
+
+
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -45,11 +46,6 @@
 
 
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-
-
-
-
-
 
   <style id="splash-screen-style">
     html {
@@ -149,6 +145,12 @@
         }
       });
     });
+  </script>
+  <script>
+    const regExp = new RegExp("bot|google|baidu|bing|msn|teoma|slurp|yandex", "i");
+    if (regExp.test(navigator.userAgent)) {
+      window.flutterWebRenderer = "html";
+    }
   </script>
 
 

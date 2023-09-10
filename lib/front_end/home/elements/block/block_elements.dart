@@ -8,6 +8,7 @@ import 'package:my_portfolio/util/colors.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'dart:js' as js;
 import 'package:responsive_sizer/responsive_sizer.dart' as ResponsiveSizer;
+import 'package:seo_renderer/seo_renderer.dart';
 
 class BlockElement {
   UIColors uiColors = UIColors();
@@ -88,26 +89,28 @@ class BlockElement {
     );
   }
 
-  AutoSizeText subText(String text, double size) {
+  TextRenderer subText(String text, double size) {
     // print(text + '${size.w}');
-    return AutoSizeText(
-      text,
-      textAlign: TextAlign.center,
-      style: GoogleFonts.prompt(
-        textStyle: TextStyle(
-          color: uiColors.darkblue,
-          fontWeight: FontWeight.normal,
-          fontSize: size.w,
+    return TextRenderer(
+      child: AutoSizeText(
+        text,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.prompt(
+          textStyle: TextStyle(
+            color: uiColors.darkblue,
+            fontWeight: FontWeight.normal,
+            fontSize: size.w,
+          ),
         ),
+        maxFontSize: 20,
+        minFontSize: 1,
+        maxLines: 6,
+        overflow: TextOverflow.ellipsis,
       ),
-      maxFontSize: 20,
-      minFontSize: 1,
-      maxLines: 6,
-      overflow: TextOverflow.ellipsis,
     );
   }
 
-  AutoSizeText hedText(String text, double size) {
+  TextRenderer hedText(String text, double size) {
     // print(text + '${size.w}');
     return
         // Text(
@@ -121,48 +124,54 @@ class BlockElement {
         //     ),
         //   ),
         // );
-        AutoSizeText(
-      text,
-      style: GoogleFonts.prompt(
-        textStyle: TextStyle(
-          color: uiColors.darkblue,
-          fontWeight: FontWeight.bold,
-          fontSize: size.w,
+        TextRenderer(
+      child: AutoSizeText(
+        text,
+        style: GoogleFonts.prompt(
+          textStyle: TextStyle(
+            color: uiColors.darkblue,
+            fontWeight: FontWeight.bold,
+            fontSize: size.w,
+          ),
         ),
+        maxFontSize: 30,
+        minFontSize: 1,
+        // maxLines: 4,
+        // overflow: TextOverflow.ellipsis,
       ),
-      maxFontSize: 30,
-      minFontSize: 1,
-      // maxLines: 4,
-      // overflow: TextOverflow.ellipsis,
     );
   }
 
-  Text mainText(String text, double size) {
+  TextRenderer mainText(String text, double size) {
     // print(text + '${size.w}');
 
-    return Text(
-      text,
-      textAlign: TextAlign.center,
-      style: GoogleFonts.ubuntu(
-        textStyle: TextStyle(
-          color: uiColors.darkblue,
-          fontWeight: FontWeight.bold,
-          fontSize: size.w,
+    return TextRenderer(
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.ubuntu(
+          textStyle: TextStyle(
+            color: uiColors.darkblue,
+            fontWeight: FontWeight.bold,
+            fontSize: size.w,
+          ),
         ),
       ),
     );
   }
 
-  Text navText(String text, double size, bool isSelect) {
+  TextRenderer navText(String text, double size, bool isSelect) {
     double opacity = isSelect ? 1 : 0.5;
 
-    return Text(
-      text,
-      style: GoogleFonts.prompt(
-        textStyle: TextStyle(
-          color: uiColors.red.withOpacity(opacity),
-          fontWeight: FontWeight.bold,
-          fontSize: size.w,
+    return TextRenderer(
+      child: Text(
+        text,
+        style: GoogleFonts.prompt(
+          textStyle: TextStyle(
+            color: uiColors.red.withOpacity(opacity),
+            fontWeight: FontWeight.bold,
+            fontSize: size.w,
+          ),
         ),
       ),
     );

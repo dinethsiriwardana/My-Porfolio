@@ -61,7 +61,7 @@ class Review {
                       ? blockElement.mainText(
                           (getReviewController.isReviewed == true
                               ? "Thank you :-)"
-                              : "Write Review :-)"),
+                              : "Write a Review :-)"),
                           isMobi ? 3 : 1)
                       : Row(
                           children: [

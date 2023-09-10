@@ -19,6 +19,7 @@ import 'package:my_portfolio/front_end/home/elements/block/review_block.dart';
 import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,11 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(
+    RobotDetector(
+      child: MyApp(),
+    ),
+  );
   try {
     Github github = Github(); // github.userdata();
     Spotify spotify = Spotify();
@@ -53,7 +58,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const HomePage(),
-      // home: Test(),
+      navigatorObservers: [seoRouteObserver],
     );
   }
 }
