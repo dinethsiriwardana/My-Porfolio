@@ -11,12 +11,15 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_portfolio/backend/github.dart';
 import 'package:my_portfolio/backend/lichess.dart';
+import 'package:my_portfolio/backend/review.dart';
 import 'package:my_portfolio/backend/spotify.dart';
 import 'package:my_portfolio/backend/vscode.dart';
 import 'package:my_portfolio/firebase_options.dart';
+import 'package:my_portfolio/front_end/home/elements/block/review_block.dart';
 import 'package:my_portfolio/landing_page.dart';
 import 'package:my_portfolio/test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +29,11 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(
+    RobotDetector(
+      child: MyApp(),
+    ),
+  );
   try {
     Github github = Github(); // github.userdata();
     Spotify spotify = Spotify();
@@ -51,7 +58,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const HomePage(),
-      // home: Test(),
+      navigatorObservers: [seoRouteObserver],
     );
   }
 }

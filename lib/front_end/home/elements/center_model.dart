@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,6 +48,16 @@ class _CenterModelState extends State<CenterModel> {
 
           height: wsize,
           width: wsize,
+          // child: CachedNetworkImage(
+          //   imageUrl: "/image/my.png",
+          //   placeholder: (context, url) => Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: CircularProgressIndicator(
+          //       color: uiColors.lightblue,
+          //     ),
+          //   ),
+          //   errorWidget: (context, url, error) => Icon(Icons.error),
+          // ),
         ),
         Obx(
           () => TimeCircle(

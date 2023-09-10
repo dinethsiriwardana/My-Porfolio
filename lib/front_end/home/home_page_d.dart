@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio/backend/review.dart';
 import 'package:my_portfolio/controller/nav_controller.dart';
 import 'package:my_portfolio/front_end/home/elements/about_me.dart';
 import 'package:my_portfolio/front_end/home/elements/block/block_elements.dart';
@@ -18,8 +19,13 @@ import 'package:my_portfolio/front_end/home/elements/project.dart';
 import 'package:my_portfolio/util/colors.dart';
 import 'package:preload_page_view/preload_page_view.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:responsive_sizer/responsive_sizer.dart' as ResponsiveSizer;
+import 'package:stroke_text/stroke_text.dart';
 
+import '../../controller/review_controller.dart';
 import '../../controller/time_controller.dart';
+import 'elements/block/review_block.dart';
 import 'elements/time_circle.dart';
 import 'dart:js' as js;
 
@@ -33,7 +39,15 @@ class HomePageD extends StatefulWidget {
 class _HomePageDState extends State<HomePageD> {
   final GetTimeController getTimeController = Get.put(GetTimeController());
   final GetNavController getNavController = Get.put(GetNavController());
+  final GetReviewController getReviewController =
+      Get.put(GetReviewController());
+
   final UIColors uiColors = UIColors();
+  BlockElement blockElement = BlockElement();
+  bool isMobi =
+      ResponsiveSizer.Device.screenType == ResponsiveSizer.ScreenType.mobile
+          ? true
+          : false;
 
   void initState() {
     super.initState();
@@ -42,11 +56,27 @@ class _HomePageDState extends State<HomePageD> {
     getTimeController.startTimerMin();
     getTimeController.startTimerhour();
     FlutterNativeSplash.remove();
+    // Addreview addreview = Addreview();
   }
 
-  BlockElement blockElement = BlockElement();
+  void showreview() async {
+    try {
+      final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+      final SharedPreferences prefs = await _prefs;
+      // await prefs.remove('reviewed');
+
+      if (prefs.getBool('reviewed') != null && prefs.getBool('reviewed')!) {
+        print(prefs.getBool('reviewed'));
+        getReviewController.changeIsReviewed(true);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    showreview();
     Column block = const Column();
 
     return Scaffold(
@@ -72,6 +102,17 @@ class _HomePageDState extends State<HomePageD> {
                 children: [
                   blockElement.mainText("Hello", 1.8),
                   blockElement.mainText("I'm Dineth Siriwardhana", 2.2),
+                  StrokeText(
+                    text: "A DEVELOPER",
+                    textStyle: GoogleFonts.ubuntu(
+                      textStyle: TextStyle(
+                        color: uiColors.green.withOpacity(0),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 2.2.w,
+                      ),
+                    ),
+                    strokeColor: uiColors.darkblue,
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -81,7 +122,23 @@ class _HomePageDState extends State<HomePageD> {
             Obx(() {
               return getNavController.currentBlock.value;
             }),
-            Align(alignment: Alignment.bottomRight, child: Contact().contact()),
+            Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Obx(() {
+                        return SizedBox(child: Review().reviewGlass());
+                      }),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Contact().contact(),
+                    ],
+                  ),
+                )),
             Align(
               alignment: Alignment.bottomLeft,
               child: Obx(() {

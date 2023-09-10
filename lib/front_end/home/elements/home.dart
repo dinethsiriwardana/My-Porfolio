@@ -18,7 +18,7 @@ class Home {
   Widget homeBlock() {
     return isMobi
         ? SizedBox(
-            height: 53.h,
+            height: 48.h,
             child: columnBlock(),
           )
         : columnBlock();
