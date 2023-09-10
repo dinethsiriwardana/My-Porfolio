@@ -15,8 +15,7 @@ class Lichess {
     final url = 'https://lichess.org/api/account/playing';
     final response = await http.get(Uri.parse(url), headers: {
       'Accept': 'application/json',
-      'Authorization':
-          'Bearer lip_kvgOLsjaVgZBTnBSdtRk' // Replace with your actual API token
+      'Authorization': 'Bearer ' // Replace with your actual API token
     });
 
     if (response.statusCode == 200) {
