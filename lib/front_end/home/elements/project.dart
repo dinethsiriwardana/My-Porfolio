@@ -27,45 +27,21 @@ class Project {
             height: 15,
           ),
           blockElement.singleDetailsBlock(
-            "Jul 2023",
-            "Faculty of Technology - UOR",
-            "RICIT - 2023",
+            "Aug 2024",
+            "Mayurapada CC",
+            "Advance Level Admission Portal",
             isMobi
-                ? "Develop Official Website for Ruhuna International Conference on Innovation and Technology 2023"
-                : "Develop Official Website for Ruhuna International \nConference on Innovation and Technology 2023",
+                ? "NextJS | MongoDB | Docker | Choreo - Managed 900+ applicants with 99% uptime"
+                : "NextJS | MongoDB | Docker | Choreo \n Managed 900+ applicants with 99% uptime",
           ),
-          InkWell(
-              child: blockElement.singleDetailsBlock(
-                "Jun 2023",
-                "A University Project",
-                "Speed Rent",
-                "Website For Car Renting Company With SMS Gateway #Bootstrap #PHP #MySQL",
-              ),
-              onTap: () {
-                js.context.callMethod('open', ['https://speedrent.live']);
-                js.context.callMethod(
-                    'open', ['https://github.com/dinethsiriwardana/SpeedRent']);
-              }),
           blockElement.singleDetailsBlock(
-            "May 2023",
-            "Mayurapada C.C.",
-            "Student Management System",
-            "Mayurapada Student, Teachers management System #Flutter #Laravel #SQL",
-          ),
-          InkWell(
-              child: blockElement.singleDetailsBlock(
-                "Jan 2022 - Present",
-                "Mobile App",
-                "Time Tracker",
-                "Mobile App for Students to monitor their work time  #flutter #firebase",
-              ),
-              onTap: () {
-                js.context.callMethod('open',
-                    ['https://github.com/dinethsiriwardana/Time-Tracker']);
-                js.context.callMethod('open', [
-                  'https://play.google.com/store/apps/details?id=com.sstudio.timetracker'
-                ]);
-              }),
+            "Sep 2024 - Ongoing",
+            "Research Project",
+            "Wild Rice Locations Identification",
+            isMobi
+                ? "Flutter | Firebase | Google Map API - Developing a app to map and \nidentify habitats of wild rice relatives in Sri Lanka, \nsetting key conservation priorities to protect biodiversity \nand support sustainable agricultural practices."
+                : "Flutter | Firebase | Google Map API \n Developing a app to map and \nidentify habitats of wild rice relatives in Sri Lanka, \nsetting key conservation priorities to protect biodiversity \nand support sustainable agricultural practices.",
+          )
         ],
       ),
     );

@@ -39,6 +39,8 @@ class Contact {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             blockElement.contactBar("/image/wa.png", 'https://wa.link/vm0zbm'),
+            blockElement.contactBar(
+                "/image/gh.png", 'https://github.com/dinethsiriwardana'),
             blockElement.contactBar("/image/li.png",
                 'https://www.linkedin.com/in/dinethsiriwardana/'),
             blockElement.contactBar(

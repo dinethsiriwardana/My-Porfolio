@@ -103,7 +103,7 @@ class _HomePageDState extends State<HomePageD> {
                   blockElement.mainText("Hello", 1.8),
                   blockElement.mainText("I'm Dineth Siriwardhana", 2.2),
                   StrokeText(
-                    text: "A DEVELOPER | α MLSA | Postman Student Leader",
+                    text: "A DEVELOPER | β MLSA | Postman Student Leader",
                     textStyle: GoogleFonts.ubuntu(
                       textStyle: TextStyle(
                         color: uiColors.green.withOpacity(0),

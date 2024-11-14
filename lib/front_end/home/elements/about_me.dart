@@ -49,13 +49,15 @@ class AboutMe {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               blockElement.programmingLicon('flutter'),
-              blockElement.programmingLicon('laravel'),
+              blockElement.programmingLicon('next'),
+              blockElement.programmingLicon('azure'),
+              blockElement.programmingLicon('docker'),
             ],
           ),
           SizedBox(
             height: isMobi ? 5 : 10,
           ),
-          blockElement.hedText("Everything I know", isMobi ? 4.2 : 1.3),
+          blockElement.hedText("Also I know", isMobi ? 4.2 : 1.3),
           SizedBox(
             height: isMobi ? 5 : 10,
           ),

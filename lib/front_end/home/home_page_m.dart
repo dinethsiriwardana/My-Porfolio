@@ -84,7 +84,7 @@ class _HomePageMState extends State<HomePageM> {
                 blockElement.mainText("Hello I'm", 5),
                 blockElement.mainText("Dineth Siriwardhana", 7),
                 StrokeText(
-                  text: "A DEVELOPER | α MLSA | Postman Student Leader",
+                  text: "A DEVELOPER | β MLSA | Postman Student Leader",
                   textStyle: GoogleFonts.ubuntu(
                     textStyle: TextStyle(
                       color: uiColors.green.withOpacity(0),

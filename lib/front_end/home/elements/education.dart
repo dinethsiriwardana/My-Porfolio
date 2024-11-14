@@ -42,6 +42,20 @@ class Education {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                blockElement.hedText("KodeKloud", isMobi ? 5 : 1.5),
+                blockElement.subText("Kubernetes - Level 1", isMobi ? 3.5 : 1),
+                blockElement.subText(
+                    "Docker - Level 1(KodeKloud)", isMobi ? 3.5 : 1),
+              ],
+            ),
+          ),
+          Padding(
+            padding: isMobi
+                ? EdgeInsets.fromLTRB(15.0, 5, 15, 5)
+                : EdgeInsets.fromLTRB(30.0, 10, 30, 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 blockElement.hedText("Linkedin Learning", isMobi ? 5 : 1.5),
                 blockElement.subText("Prompt Engineering", isMobi ? 3.5 : 1),
                 blockElement.subText(
@@ -58,10 +72,10 @@ class Education {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                blockElement.hedText("Free Code Camp", isMobi ? 5 : 1.5),
-                blockElement.subText(
-                    "Instagram Clone Using Laravel", isMobi ? 3.5 : 1),
-                blockElement.subText("Learni TypeScript", isMobi ? 3.5 : 1),
+                blockElement.hedText("Postman", isMobi ? 5 : 1.5),
+                blockElement.subText("Postman API Fundamentals Student Expert",
+                    isMobi ? 3.5 : 1),
+                blockElement.subText("Postman API Tester", isMobi ? 3.5 : 1),
               ],
             ),
           ),

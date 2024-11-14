@@ -34,6 +34,12 @@ class Experience {
             "Database Adminisrator",
             "Consultant | Developer and Maintaine DBMS",
           ),
+          blockElement.singleDetailsBlock(
+            "Jan 2024 - Present",
+            "Microsoft IT Pro Community",
+            "Event Planner",
+            "Planning Sessions ",
+          ),
           Padding(
             padding: isMobi
                 ? EdgeInsets.fromLTRB(15.0, 5, 15, 5)
@@ -43,10 +49,13 @@ class Experience {
               children: [
                 blockElement.hedText("Also I'm a", isMobi ? 5 : 1.5),
                 blockElement.subText(
-                    "Graphic Designer since 2017", isMobi ? 3.5 : 1),
+                    "Former Top Software Development Voice @ Linkedin",
+                    isMobi ? 3.5 : 1),
                 blockElement.subText(
-                    "Photographer since 2018", isMobi ? 3.5 : 1),
-                blockElement.subText("Mixing & mastering engineer 2018 - 2022",
+                    "Co Editor, Career Circle, Faculty of Technology 2024",
+                    isMobi ? 3.5 : 1),
+                blockElement.subText(
+                    "Vice President, ICT Student’sCircle Faculty of Technology - 2023",
                     isMobi ? 3.5 : 1),
               ],
             ),

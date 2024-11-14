@@ -41,8 +41,8 @@ class _CenterModelState extends State<CenterModel> {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: AssetImage("/image/my.png"),
-              fit: BoxFit.cover,
+              image: AssetImage("/image/my2.png"),
+              fit: BoxFit.fill,
             ),
           ),
 

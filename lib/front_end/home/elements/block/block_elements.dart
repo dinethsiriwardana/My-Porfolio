@@ -94,7 +94,7 @@ class BlockElement {
     return TextRenderer(
       child: AutoSizeText(
         text,
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.left,
         style: GoogleFonts.prompt(
           textStyle: TextStyle(
             color: uiColors.darkblue,
