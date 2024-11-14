@@ -7,9 +7,10 @@ import 'package:my_portfolio/controller/spotify_controller.dart';
 
 class Spotify {
   GetSpotifyController getSpotifyController = Get.put(GetSpotifyController());
-  final String _clientId = "";
-  final String _clientSecret = "";
-  final String _refresh_token = "";
+  final String _clientId = "bf94d731016149fb8c43e58f254b685c";
+  final String _clientSecret = "6fdb61e6b9d842dca1f9d78140e725bb";
+  final String _refresh_token =
+      "AQAN-CkRDgSzr5QvZpxmuVzWvuRTJ2-yztfrrVY7YDwXFP1_FvlKBeEjik93LG4IyxV7Rdlo_nF2x2TRVLjBjIE7uoxyZ2b6nJw5AoXauwQRHQZssD2dBF_1DsmpNOA53fc";
   String _token = "";
 
   Spotify() {

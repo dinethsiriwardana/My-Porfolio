@@ -108,7 +108,7 @@ class _HomePageDState extends State<HomePageD> {
                       textStyle: TextStyle(
                         color: uiColors.green.withOpacity(0),
                         fontWeight: FontWeight.bold,
-                        fontSize: 2.w,
+                        fontSize: 1.5.w,
                       ),
                     ),
                     strokeColor: uiColors.darkblue,
